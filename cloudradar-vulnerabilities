@@ -1,0 +1,29 @@
+# CloudRadar: Automated Vulnerability Triage & Asset Tracking
+
+A portfolio-ready, JSON-driven vulnerability triage system modeling automated cloud runtime security scans, Service Level Agreement (SLA) monitoring, and dynamic infrastructure mapping.
+
+## 🚀 Project Overview
+CloudRadar simulates an enterprise cloud security operations workflow. It bridges raw technical infrastructure telemetry with high-level compliance monitoring by feeding structured JSON data into an automated Python verification pipeline and a visual triage center hosted in Notion.
+
+## 🛠️ Repository Architecture
+* `vulnerability-feed.json`: Simulates live security scanner logs tracking unresolved CVE vulnerabilities and critical resource data.
+* `cloud-inventory.json`: Tracks enterprise multi-cloud structural configurations across AWS, Azure, and GCP.
+* `validate_radar.py`: A Python automation script that parses raw JSON, validates structural integrity, and evaluates impending SLA deadlines.
+* `.github/workflows/main.yml`: An automated CI/CD pipeline using GitHub Actions that runs security validation scripts on every code push.
+
+## 🧠 Core Engineering Skills Demonstrated
+* **Data Modeling:** Structuring production-grade JSON files to handle intricate nested arrays mapping security bugs directly to vulnerable assets.
+* **DevSecOps & Automation:** Building custom Python parsing logic and integrating continuous integration workflows through GitHub Actions.
+* **Vulnerability Lifecycle Management:** Interpreting CVSS scores, establishing threat levels, and tracking rigid SLA timelines to maintain systemic uptime.
+* **Stakeholder Visibility:** Translating technical machine logs into executive, non-technical reporting boards via Notion databases.
+
+## ⚡ Automated CI/CD Pipeline
+Every time configuration updates or raw scans are pushed to this repository, a GitHub Actions runner executes the `validate_radar.py` script. The script performs the following validation checks:
+1. Syntactic code integrity validation for JSON feeds.
+2. Multi-cloud architecture schema mapping analysis.
+3. Automated time-delta tracking to flag critical vulnerabilities within 24 hours of breaching their operational SLAs.
+
+## 📋 Notion Command Center Setup
+To see how this raw technical dataset is visualized for security analysts and governance stakeholders:
+1. View the public project dashboard here: **[INSERT YOUR NOTION PAGE LINK HERE]**
+2. The dashboard translates `vulnerability-feed.json` into a light-red highlighted **Active Incidents Board** and categorizes your `cloud-inventory.json` into a clean **Infrastructure Asset Catalog**.
