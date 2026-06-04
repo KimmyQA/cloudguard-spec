@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org",
+  "project_name": "CloudGuard Enterprise Policy",
+  "version": "1.4.0",
+  "last_updated": "2026-06-04T12:00:00Z",
+  "global_defaults": {
+    "mfa_enforced": true,
+    "root_api_keys_allowed": false,
+    "default_retention_days": 90
+  },
+  "iam_roles": [
+    {
+      "role_id": "role-sec-admin-01",
+      "name": "Security Administrator",
+      "platform": "AWS",
+      "least_privilege_enforced": true,
+      "permissions": ["iam:*", "guardduty:*", "securityhub:*"],
+      "conditions": {
+        "source_ip_whitelist": ["192.168.10.0/24"],
+        "max_session_duration_hours": 2
+      }
+    },
+    {
+      "role_id": "role-dev-read-02",
+      "name": "Developer ReadOnly",
+      "platform": "Azure",
+      "least_privilege_enforced": true,
+      "permissions": ["Microsoft.Resources/subscriptions/resourceGroups/read"],
+      "conditions": {
+        "source_ip_whitelist": ["*"],
+        "max_session_duration_hours": 8
+      }
+    }
+  ],
+  "compliance_mappings": {
+    "SOC2_Type_II": {
+      "status": "Compliant",
+      "controls_covered": ["CC6.1", "CC6.3"],
+      "next_audit_date": "2026-12-15"
+    },
+    "HIPAA": {
+      "status": "In_Progress",
+      "controls_covered": ["§164.312(a)"],
+      "next_audit_date": "2026-09-01"
+    }
+  },
+  "network_perimeters": [
+    {
+      "zone": "DMZ",
+      "allowed_ingress_ports": [443],
+      "denied_egress_ports": [22, 3389],
+      "encryption_required": true
+    },
+    {
+      "zone": "Internal_DB",
+      "allowed_ingress_ports": [5432, 3306],
+      "denied_egress_ports": ["*"],
+      "encryption_required": true
+    }
+  ]
+}
