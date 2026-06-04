@@ -47,13 +47,13 @@
   "network_perimeters": [
     {
       "zone": "DMZ",
-      "allowed_ingress_ports": [443],
-      "denied_egress_ports": [22, 3389],
+      "allowed_ingress_ports": [],
+      "denied_egress_ports": [],
       "encryption_required": true
     },
     {
       "zone": "Internal_DB",
-      "allowed_ingress_ports": [5432, 3306],
+      "allowed_ingress_ports": [],
       "denied_egress_ports": ["*"],
       "encryption_required": true
     }
