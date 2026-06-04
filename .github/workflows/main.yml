@@ -1,0 +1,27 @@
+name: CloudRadar Automated Security Validation
+
+# Trigger this pipeline on every code push or manual trigger
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  validate-and-analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Clone your repository code into the GitHub runner
+    - name: Checkout Repository Code
+      uses: actions/checkout@v4
+
+    # Step 2: Set up a clean Python runtime environment
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    # Step 3: Run your custom security validation script
+    - name: Run CloudRadar SLA Analysis
+      run: |
+        python validate_radar.py
